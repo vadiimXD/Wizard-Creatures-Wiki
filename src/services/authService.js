@@ -5,18 +5,18 @@ const { SECRET } = require("../config/config")
 
 exports.registerUser = async (email, password, body) => {
 
-    if (!body.email || !body.password || !body.repassword) {
+    if (!body.email || !body.password || !body.repassword || !body.firstName || !body.lastName) {
         throw new Error("invalid values")
     }
 
     if (body.repassword !== body.password) {
-        throw new Error("invalid values")
+        throw new Error("passwords dont match")
     }
 
     const salt = await bcrypt.genSalt();
     const saltedHash = await bcrypt.hash(password, salt);
 
-    User.create({ email, password: saltedHash })
+    User.create({ email, password: saltedHash, firstName: body.firstName, lastName: body.lastName })
 
     const user = await this.getUser(email);
     const token = await this.createToken(user._id);
