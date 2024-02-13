@@ -35,8 +35,8 @@ app.use((req, res, next) => {
 app.use(routes)
 
 
-mongoose.connect(`mongodb://localhost:27017/movie-magic`).then(() => {
+mongoose.connect(`mongodb://localhost:27017/Wizard-Creatures-Wiki`).then(() => {
     console.log("DB connected successfully")
-    app.listen(port, () => console.log(`Server working on porthttp://localhost:${port} :)`))
+    app.listen(port, () => console.log(`Server working on url http://localhost:${port} :)`))
 });
 
