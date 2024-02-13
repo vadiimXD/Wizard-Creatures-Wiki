@@ -6,7 +6,7 @@
     <title>Details Page</title>
 
     <!-- Do not forget to change the path to the css file -->
-    <link href="./static/css/style.css" type="text/css" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,26 +15,28 @@
 
         <!-- In case of error, you should display div with class "error-container" -->
         <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-        <!--
+
+        {{#if error}}
         <div class="error-container">
             <p>Error</p>
-        </div>-->
-
+        </div>
+        {{/if}}
 
         <nav>
             <!-- Do not forget to change the path to the image -->
-            <img src="./static/img/logo.png" alt="logo">
+            <img src="/img/logo.png" alt="logo">
 
             <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">All Posts</a></li>
-                <!-- Logged users -->
-                <li><a href="#">Create Post</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Logout</a></li>
-                <!-- Guest users -->
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/posts">All Posts</a></li>
+                {{#if isAuthenticated}}
+                <li><a href="/create">Create Post</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+                {{/if}}
             </ul>
 
         </nav>
@@ -56,7 +58,11 @@
                                 <p class="card-eye">Eye Colour: White</p>
                             </div>
 
-                            <p class="disc">Description: Thestrals are an elusive, carnivorous species of winged horse, visible only to those who have witnessed and embraced a death, and described as having "blank, white, shining eyes," a "dragonish face," "long, black manes," "great leathery wings," and the "skeletal body of a great, black, winged horse"; also described by Hagrid as "dead clever an' useful", and also by Harry as "reptilian".</p>
+                            <p class="disc">Description: Thestrals are an elusive, carnivorous species of winged horse,
+                                visible only to those who have witnessed and embraced a death, and described as having
+                                "blank, white, shining eyes," a "dragonish face," "long, black manes," "great leathery
+                                wings," and the "skeletal body of a great, black, winged horse"; also described by
+                                Hagrid as "dead clever an' useful", and also by Harry as "reptilian".</p>
 
                             <!-- If there is no registered user, do not display buttons-->
                             <div class="social-btn">
@@ -73,8 +79,7 @@
                         </div>
                     </div>
                     <div class="card_right">
-                        <img src="./static/img/Thestral.jpeg"
-                            alt="image">
+                        <img src="./static/img/Thestral.jpeg" alt="image">
                     </div>
                 </div>
 
