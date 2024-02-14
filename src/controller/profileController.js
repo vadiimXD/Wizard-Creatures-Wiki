@@ -6,7 +6,6 @@ const { getErrorMessage } = require("../utils/errorUtils");
 router.get("/profile", isAuth, async (req, res) => {
     try {
         const userInfo = await userService.getUser(req.user.userId).populate("createdPosts").lean()
-        console.log(userInfo.firstName)
         res.render("my-posts", { layout: false, posts: userInfo.createdPosts, userInfo, })
     } catch (error) {
         const errorMess = getErrorMessage(error)
