@@ -4,18 +4,23 @@ const CreatureSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        minLength: 2,
     },
     species: {
         type: String,
         required: true,
+        minLength: 3,
+
     },
     skinColor: {
         type: String,
-        required: true
+        required: true,
+        minLength: 2,
     },
     eyeColor: {
         type: String,
         required: true,
+        minLength: 2,
     },
     image: {
         type: String,
@@ -25,6 +30,8 @@ const CreatureSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
+        minLength: 5,
+        maxLength: 500,
     },
     votes: [{
         type: mongoose.Types.ObjectId,
