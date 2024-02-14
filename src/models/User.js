@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    posts: [{
+    createdPosts: [{
         type: mongoose.Types.ObjectId,
         ref: "Creature",
     }]

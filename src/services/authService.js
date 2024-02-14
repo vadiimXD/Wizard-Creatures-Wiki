@@ -16,7 +16,7 @@ exports.registerUser = async (email, password, body) => {
     const salt = await bcrypt.genSalt();
     const saltedHash = await bcrypt.hash(password, salt);
 
-    User.create({ email, password: saltedHash, firstName: body.firstName, lastName: body.lastName })
+    await User.create({ email, password: saltedHash, firstName: body.firstName, lastName: body.lastName })
 
     const user = await this.getUser(email);
     const token = await this.createToken(user._id);

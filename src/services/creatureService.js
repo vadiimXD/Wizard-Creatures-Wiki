@@ -1,6 +1,12 @@
-const Creature = require("../models/Creature")
+const Creature = require("../models/Creature");
+const User = require("../models/User");
 
-exports.createCreature = (body) => { return Creature.create(body) }
+exports.createCreature = async (body, userId) => {
+    await Creature.create(body);
+    const creature = await Creature.findOne({ owner: userId })
+    await User.findByIdAndUpdate(userId, { $push: { createdPosts: creature._id } })
+    return
+}
 
 exports.getAllCreatures = () => { return Creature.find() }
 
