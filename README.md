@@ -1,2 +1,2 @@
 # Wizard-Creatures-Wiki
-Exam prep @SoftUni
+JS BACKEND Exam prep @SoftUni
